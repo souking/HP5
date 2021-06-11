@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>CSSの練習</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- #1~8 -->
+  <div class="container">
+    <div class="box box1">1</div>  
+    <div class="box box2">2</div>  
+    <div class="box box3">3</div>  
+  </div>
+
+
+  <!-- 
+    ##9~11
+  <header>Header</header>
+  <div class="container">
+    <main>Main</main>
+    <nav>Nav</nav>
+    <aside>Aside</aside>
+  </div>
+  <footer>Footer</footer>
+  MainとAsideだけ横並びにする
+  幅を設定しなかったら、コンテンツの幅になるので
+  Asideは固定幅でMainは可変
+
+##10
+navタグを追加した
+cssのorderは順番を決める
+何も指定しなかったら、orderは０でhtmlの順番だが、orderが小さい順番に並ぶ
+
+##11
+footerを一番下に設定する方法
+Headerとcontainerとfooterをflex itemで縦に並べつつ、containerの高さが伸びるようにflexを１に指定
+中の直近の子要素は縦方向に並べたいのでflex-decorationをcolumnに指定
+そして、containerは縦方向に伸びてほしいのでflexを１に指定
+containerはmain,nav,asideに対するフレックスコンテナで、bodyに対するフレックスアイテムである
+また、bodyは高さが設定されていないのでコンテンツの高さにしかならず、footerは下まで行かない
+だから、ブラウザに対して１００％の高さにしたいのでbodyに対してheightを100%にする
+しかし、bodyの親要素であるhtmlにも高さが設定されていないので、heightを１００％にする
+flex-decorationのcolumnはフレックスコンテナの主軸の向きはインライン要素と同じになる
+例えば、文字が左から右の場合、主軸は垂直になり、フレックスアイテムは上から下に配置される
+また、flexアイテムではmarginの相殺が起きない
+headerに対してmargin-bottom,containerにmargin-topを設定した
+相殺が起きずに150px空いている
+-->
+
+
+<!-- 
+  #12
+<header>
+  <div></div>
+</header>
+
+  header領域でdivを中央に配置したかった場合
+  headerには高さを設定した後に背景色を設定する
+  divにも幅と高さ、背景色を設定する
+  そして、divを中央に配置したい場合は、headerはpositionをrelativeにして、divはpositionをabsoluteにして絶対配置にする
+  絶対配置は、topからの距離を50%の位置からdivの半分の高さを引いてあげる
+  leftは50%の位置からdivの半分の幅を引いてあげる
+  しかしこの方法だと、divの大きさを変更したときにレイアウトが崩れてしまうので、flexboxで設定する
+  まずはheaderにflexboxの設定
+  その上で、justify-contentをcenterにして主軸方向で中央揃えにする
+  そして、align-itemsで交差軸方向で中央揃えにする
+ -->
+
+
+ <!-- 
+ ##13~14
+ <header>
+   <img src="img/logo.png" width="64" height="64">
+   <nav>
+     <ul>
+       <li><a href="">Menu</a></li>
+       <li><a href="">Menu</a></li>
+       <li><a href="">Menu</a></li>
+     </ul>
+   </nav>
+ </header>
+
+   #13
+   これからはよくみるヘッダーのレイアウト
+   まずは親要素であるheaderのdisplayをflexにする
+   そして、marginとpaddingを0にする
+   navタグのulリストの黒丸を消すために、list-styleをnoneにする
+   そして、画像は左に配置して、navは右に配置したいので、justify-contentをspace-betweenにすると間に余白ができる
+   また、余白をnavの左に配置指定という意味のmargin-leftをautoにするとうまくいく
+
+   #14
+   メニューを横並びにしたい
+   nav ulをdisplayをflexにする
+   横並びになったが、くっつきすぎなので、
+   幅が変わったのがわかりやすいように、背景色をピンクにする
+   幅はwidthで100pxに指定
+   テキストを中央揃えにするためにtext-alignをcenterに指定
+   行ボックスの高さも画像と同じ、line-heightで64pxにする
+   これは、文字を中央揃えにするためにline-heightを使っている
+   今のままだと、文字のところだけがリンクになっているので、その周りもリンクにするために
+   nav liではなくnav aにする
+   これは、display がinlineかblockかの違い
+   div,p,h1~6は初期値がblockです
+   要素は縦に並び
+   要素の前後には改行が入るなどの特徴があります
+   幅や高さ、余白は指定できるが、text-alignやvartical-alignなどは設定できない
+   span,a,imgタグは初期値でinlineが指定されている
+   要素の間には改行はなく、横に並ぶ
+   基本的にはblockの中で使われます
+   高さや、余白は指定できないが、text-alignは指定できる
+   本題に戻ると、li aにすると幅が元に戻る
+   また、背景色のピンクを消して、ホバーした時の色を設定する
+  -->
+
+
+  <!-- ##15~16 -->
+  <section>
+    <div class="pic">
+      <img src="img/logo.png">
+    </div>
+    <div class="desc">
+      <p>こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。</p>
+    </div>
+  </section>
+  <section>
+    <div class="pic">
+      <img src="img/logo.png">
+    </div>
+    <div class="desc">
+      <p>こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。</p>
+    </div>
+  </section>
+  <section>
+    <div class="pic">
+      <img src="img/logo.png">
+    </div>
+    <div class="desc">
+      <p>こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。</p>
+    </div>
+  </section>
+  <section>
+    <div class="pic">
+      <img src="img/logo.png">
+    </div>
+    <div class="desc">
+      <p>こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。こんにちは。</p>
+    </div>
+  </section>
+
+  <!-- 
+    #15
+    画像と文字が交互に現れるようにレイアウトする
+    画像を左に文字を右に配置する
+    今回は、拡張性を考慮して、画像と文字をそれぞれdivタグの中に入れた
+    まずはsectionに対してdisplayをflexにして、画像は固定幅でwidthを180px、残りの幅を文字にふり分けるので、flexを1に指定
+    また、右側と下側に余白を設定した
+
+
+    #16
+    画像を左右に振り分けるには、偶数番目のsectionで主軸の方向を変える
+    section:nth-child(even)に対して、flex-directionをrow-reverseにする
+    しかし、画像の右側に空白ができてしまっているので、画像とテキストの間に空白をつけるためには、テキストは幅いっぱいに伸ばすのではなく、100%から画像の幅と余白を引いた幅を設定した
+    画像の右側の余白は消し、文字のflexも消し、sectionに対して、justify-contentをspace-betweenにしてあげた
+     -->
+
+
+</body>
+</html>
